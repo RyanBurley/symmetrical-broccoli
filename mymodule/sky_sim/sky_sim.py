@@ -34,3 +34,8 @@ def write_positions(ras,decs,nsrc):
         print("id,ra,dec", file=file)
         for i in range(nsrc):
             print(f"{i:07d}, {ras[i]:12f}, {decs[i]:12f}", file=file)
+
+def clip_to_radius():
+    '''
+    Placeholder function
+    '''
