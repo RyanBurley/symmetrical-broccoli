@@ -6,8 +6,8 @@ def generate_star_positions(nsrc):
     Function to generate right ascension and declination coordinates in degrees
     '''
     # from wikipedia
-    r_asc = '00:42:44.3'
-    dec = '41:16:09'
+    r_asc = '00:45:44.3'
+    dec = '43:16:09'
 
     day, minu, sec = dec.split(':')
     dec = int(day)+int(minu)/60+float(sec)/3600
