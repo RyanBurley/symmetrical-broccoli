@@ -1,0 +1,15 @@
+#! /usr/bin/env python
+
+from mymodule import sky_sim
+
+def main():
+    '''
+    Function to run both required functions
+    '''
+    nsrc = 1_000
+
+    star_ras, star__decs = sky_sim.generate_star_positions(nsrc)
+    sky_sim.write_positions(star_ras, star__decs, nsrc)
+
+if __name__ == "__main__":
+    main()
