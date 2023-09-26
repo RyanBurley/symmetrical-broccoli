@@ -30,7 +30,7 @@ def generate_star_positions(nsrc):
 
 def write_positions(ras,decs,nsrc):
     '''
-    Function to print star coordinates to a CSV file
+    Function to print star coordinates (RA and Dec) to a CSV file
     '''
     path = '/Users/Ryan/Software/ADACS_Workshop/sky_catalogue'
     # now write these to a csv file for use by my other program
