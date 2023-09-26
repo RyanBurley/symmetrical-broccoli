@@ -1,3 +1,10 @@
+#! /usr/bin/env python
+'''
+Code for ADACS Python workshop to create sky catalogue
+'''
+# Determine Andromeda location in ra/dec degrees
+
+# convert to decimal degrees
 import math as mh
 import random as rd
 
@@ -30,11 +37,10 @@ def generate_star_positions(nsrc):
 
 def write_positions(ras,decs,nsrc):
     '''
-    Function to print star coordinates (RA and Dec) to a CSV file
+    Function to print star coordinates to a CSV file
     '''
-    path = '/Users/Ryan/Software/ADACS_Workshop/sky_catalogue'
     # now write these to a csv file for use by my other program
-    with open(path+'/data/output/catalogue.csv','w',encoding="utf8") as file:
+    with open('../data/output/catalogue.csv','w',encoding="utf8") as file:
         print("id,ra,dec", file=file)
         for i in range(len(ras)):
             print(f"{i:07d}, {ras[i]:12f}, {decs[i]:12f}", file=file)
@@ -52,6 +58,15 @@ def crop_to_circle(ras,decs,r_asc,dec,radius):
             cut_decs.append(decs[i])
 
     return cut_ras, cut_decs
-    
 
+def main():
+    '''
+    Function to run both required functions
+    '''
+    nsrc = 1_000
 
+    star_ras, star__decs = generate_star_positions(nsrc)
+    write_positions(star_ras, star__decs, nsrc)
+
+if __name__ == "__main__":
+    main()
