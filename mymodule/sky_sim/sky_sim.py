@@ -22,6 +22,10 @@ def generate_star_positions(nsrc):
         ras.append(r_asc + rd.uniform(-1,1))
         decs.append(dec + rd.uniform(-1,1))
 
+    radius = 1
+
+    ras, decs = crop_to_circle(ras,decs,r_asc,dec,radius)
+
     return ras, decs
 
 def write_positions(ras,decs,nsrc):
@@ -32,10 +36,22 @@ def write_positions(ras,decs,nsrc):
     # now write these to a csv file for use by my other program
     with open(path+'/data/output/catalogue.csv','w',encoding="utf8") as file:
         print("id,ra,dec", file=file)
-        for i in range(nsrc):
+        for i in range(len(ras)):
             print(f"{i:07d}, {ras[i]:12f}, {decs[i]:12f}", file=file)
 
-def clip_to_radius():
+def crop_to_circle(ras,decs,r_asc,dec,radius):
     '''
     Placeholder function
     '''
+    cut_ras = []
+    cut_decs = []
+
+    for i in range(len(ras)):
+        if ((r_asc - ras[i])**2 + (dec - decs[i])**2 < radius**2):
+            cut_ras.append(ras[i])
+            cut_decs.append(decs[i])
+
+    return cut_ras, cut_decs
+    
+
+
